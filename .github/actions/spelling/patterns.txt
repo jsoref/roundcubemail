@@ -1,0 +1,82 @@
+# See https://github.com/check-spelling/check-spelling/wiki/Configuration-Examples:-patterns
+
+# data urls
+"data:[^"]*"
+'data:[^']*'
+data:[-a-zA-Z=;:/0-9+]*,\S*
+
+# GitHub SHAs
+\bapi.github\.com/repos/[^/]+/[^/]+/[^/]+/[0-9a-f]+\b
+(?:\[[0-9a-f]+\]\(https:/|)/github\.com/[^/]+/[^/]+(?:/[^/]+/[0-9a-f]+(?:[-0-9a-zA-Z/#.]*|)\b|)
+\bgithub\.com/[^/]+/[^/]+[@#][0-9a-f]+\b
+# githubusercontent
+/[-a-z0-9]+\.githubusercontent\.com/[-a-zA-Z0-9?&=_\/.]*
+# gist github
+/gist\.github\.com/[^/]+/[0-9a-f]+
+
+# stackexchange -- https://stackexchange.com/feeds/sites
+\b(?:askubuntu|serverfault|stack(?:exchange|overflow)|superuser).com/questions/\d+/[a-z-]+
+
+magnet:[-a-zA-Z=;:/0-9+?]*
+
+# hex digits including css/html color classes:
+(?:[\\0][xX]|\\u|[uU]\+|#x?|\%23)[0-9a-fA-FgGrR_]{2,}(?:[uU]?[lL]{0,2}|u\d+)\b
+
+# URL escaped characters
+\%[0-9A-F]{2}
+
+^# [0-9a-f]{32}
+# sha-... -- uses a fancy capture
+(['"]|&quot;)[0-9a-f]{40,}\g{-1}
+
+# IPv6
+\b(?:[0-9a-f]{0,4}:){5}[0-9a-f]{0,4}\b
+
+# hex digits including css/html color classes:
+(?:[\\0][xX]|\\u|[uU]\+|#x?|\%23)[0-9a-fA-FgGrR_]{2,}(?:[uU]?[lL]{0,2}|u\d+)\b
+
+# PHP regular expression string
+preg_match(?:_all|)\((['"]).*?\g{-1},
+
+# base64 decode
+base64_decode\((['"])[-a-zA-Z=;:/0-9+]*\g{-1}
+
+\bacl
+
+DzgkvJBO5.*==
+R0lGODlhD.*AQA7
+my0nUbjZXKtl7KVBZcsvWOxxtyVFxza4
+
+# ignore long runs of a single character:
+\b([A-Za-z])\g{-1}{3,}\b
+
+b64\b
+
+# Java flags
+[" ]-D
+
+\bTeX\b
+
+# \n...
+attrib == '\\
+
+# tests/Framework/Utils.php
+:c4fe:5afe:
+
+# Regular expressions for (P|p)assword
+\([A-Z]\|[a-z]\)[a-z]+
+
+# php test framework
+assertEquals\(.*\)
+
+# fontawesome
+\@fa-[a-z-]+
+
+# mail encoded content
+=\?(?:ISO-\d+-|UTF-\d+\?)[^=]*?=
+
+# timezones
+labels\['tz:.*
+
+# <word>v#
+[Vv]\d+(?:\b|(?=[a-zA-Z_]))
